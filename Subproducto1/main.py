@@ -82,6 +82,16 @@ class MainWindow(QMainWindow):
                     i += 1
                 continue
 
+            elif c in operadores_suma:
+                resultados.append([c, "Operador suma/resta", 5])  # Tipo 5 para suma/resta
+                i += 1
+                continue
+
+            elif c in operadores_mult:
+                resultados.append([c, "Operador multiplicación/división", 6])  # Tipo 6 para multiplicación/división
+                i += 1
+                continue
+
             elif c == '|':
                 if i + 1 < len(texto) and texto[i+1] == '|':
                     resultados.append([c + texto[i+1], "Operador lógico OR", 8])
@@ -90,8 +100,9 @@ class MainWindow(QMainWindow):
                     resultados.append([c, "Error léxico", 6])
                     i += 1
                 continue
+
             elif c == '&':
-                if i + 1 < len(texto) and texto[i+1] == '&':
+                if i + 1 < len(texto) and texto[i+1] == '&&':
                     resultados.append([c + texto[i+1], "Operador lógico AND", 9])
                     i += 2
                 else:
